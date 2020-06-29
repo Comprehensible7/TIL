@@ -1,0 +1,6 @@
+[ Mybatis_Student 프로젝트 ]
+
+CRUD 기본기능, 텍스트 모드의 메뉴 포함
+테이블의 컬럼 외에 계산 결과 등을 담을 수 있는 VO정의
+select문의 결과에 alias 지정하여 VO객체로 매핑
+

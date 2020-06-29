@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 도서 처리 SQL -->
+<!-- interface -->
+<mapper namespace="test.dao.BookMapper">
+
+<!-- 도서 정보 저장 -->
+<insert id="insertBook" parameterType="book">
+insert into 
+	book(
+	
+	id
+	, num
+	, name
+	, price
+	, company
+	, regidate
+	
+	)values(
+	
+		book_seq.nextVal
+		, #{num}
+		, #{name}
+		, #{price}
+		, #{company}
+		, #{regidate}
+		
+	)
+	
+</insert>
+
+<!-- 전체 도서 목록 읽기 -->
+
+<select id="printAllBook" resultType="book">
+select
+	id
+	, num
+	, name
+	, price
+	, company
+	, regidate
+	
+	from
+		book
+	order by
+		id desc
+
+
+</select>
+
+
+<!-- 도서 이름으로 도서 정보 삭제 -->
+
+<delete id="deleteBook" parameterType="string">
+delete from 
+	book
+where 
+	name = #{name}
+
+</delete>
+
+
+<!-- 도서 정보 수정 -->
+<update id="updateBook" parameterType="book">
+update book
+	set
+	 num = #{num}
+	, name = #{name}
+	, price = #{price}
+	, company = #{company}
+	, regidate = #{regidate}
+
+where 
+	id = #{id}
+	
+
+
+</update>
+
+<!-- 이름으로 도서 정보 검색 -->
+
+<select id="searchBook" parameterType="string" resultType="book">
+select
+	id
+	, num
+	, name
+	, price
+	, company
+	, regidate
+	
+from
+	book
+
+where 
+	upper(name) like '%' || upper(#{name}) || '%'
+	
+order by
+	id desc
+
+</select>
+
+
+
+</mapper>

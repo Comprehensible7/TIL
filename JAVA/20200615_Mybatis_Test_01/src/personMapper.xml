@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 연결해줄 Mapper Interface를 생성 후 연결해준다 -->
+<!-- 2번째 -->
+<mapper namespace="test.dao.PersonMapper">
+
+<!-- 중복값 x, mapper interface내부의 값을 써줘야함 -->
+<!-- 규칙만 잘 지키면 id값 만드는데 문제는 없음 -->
+<!-- 파라미터 타입은 별칭등록 가능 -->
+<!-- type alias 설정 후 별칭사용 가능 -->
+
+<!-- 회원가입 기능 -->
+<insert id="insertPerson" parameterType="person">
+
+insert into
+	person (
+	num
+	, name
+	,age
+	
+	)values(
+	person_seq.nextVal
+	,#{name}
+	,#{age}
+	
+	)
+	
+</insert>
+
+<!-- 삭제기능 -->
+<delete id="deletePerson" parameterType="int">
+
+delete from
+	person
+where
+	num = #{num}
+
+</delete>
+
+<!-- 조회 -->
+<select id="viewPerson" parameterType="int">
+
+select * from
+	person
+where
+	num = #{num}
+
+</select>
+
+
+
+</mapper>

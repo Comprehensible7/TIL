@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 학생정보 처리 SQL -->
+<!-- interface -->
+<mapper namespace="student.dao.StudentMapper">
+
+<!-- 학생 정보 저장 -->
+<insert id="insertStudent" parameterType="student">
+insert into
+	student(
+	id
+	, name
+	, kor
+	, eng
+	, mat
+	
+	)values(
+		 #{id}
+		, #{name}
+		, #{kor}
+		, #{eng}
+		, #{mat}
+	)
+
+	
+</insert>
+
+<!-- 전체 학생 목록 읽기 -->
+<select id="selectStudentAll" resultType="student">
+select 
+       id
+       ,name
+       ,kor
+       ,eng
+       ,mat
+       ,round((kor+eng+mat)/3.0, 1) as avg 
+	from
+       student
+   order by
+       id desc
+	
+</select> 
+
+<!-- 학번으로 학생정보 삭제 -->
+<delete id="deleteStudent" parameterType="string">
+delete from
+	student
+where
+	id = #{id}
+
+</delete>
+
+
+<!-- 학생 정보 수정 -->
+
+<update id="updateStudent" parameterType="student">
+update 
+	student
+	set
+	name = #{name}
+	, kor = #{kor}
+	, eng = #{eng}
+	, mat = #{mat}
+	
+where
+	id = #{id}
+	
+</update>
+
+<!-- 이름으로 학생정보 검색 -->
+<select id="searchStudent" parameterType="string" resultType="student">
+	select 
+       id
+       ,name
+       ,kor
+       ,eng
+       ,mat
+       ,round((kor+eng+mat)/3.0, 1) as avg 
+	from
+       student
+    where
+    	upper(name) like '%' || upper(#{name}) || '%'
+   order by
+       id desc
+
+</select>
+
+<!-- 학번으로 검색 -->
+<select id="searchStudentId" parameterType="string" resultType="student">
+	select
+		id
+		, name
+		, kor
+		, eng
+		, mat
+		, round((kor+eng+mat)/3.0,1) as avg
+	from
+		student
+	where
+		id = #{id}
+
+
+</select>
+
+</mapper>

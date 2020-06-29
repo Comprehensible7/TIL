@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- interface -->
+<mapper namespace="student.dao.StudentMapper">
+
+
+<insert id="insertStudent" parameterType="student">
+insert into students(
+	id,
+	name,
+	kor,
+	eng,
+	mat
+) values (
+	students_seq.nextVal,
+	#{name},
+	#{kor},
+	#{eng},
+	#{mat}
+)
+
+
+</insert>
+
+<select id="selectStudentAll" resultType="student">
+select 
+	id
+	, name
+	, kor
+	, eng
+	, mat
+	, round((kor+eng+mat)/3.0,1) as avg
+		from
+			students
+	order by
+		id desc
+
+
+</select>
+
+<delete id="deleteStudent" parameterType="int">
+delete from
+	students
+where
+	id = #{id}
+
+</delete>
+
+<update id="updateStudent" parameterType="student">
+update students
+	set
+	name = #{name}
+	, kor = #{kor}
+	, eng = #{eng}
+	, mat = #{mat}
+	
+where 
+	id = #{id}	
+
+
+</update>
+
+<select id="searchStudent" parameterType="string" resultType="student">
+select
+	id
+	, name
+	, kor
+	, eng
+	, mat
+	, round((kor+eng+mat)/3.0, 1) as avg
+from 
+	students
+where
+	upper(name) like '%' || upper(#{name}) || '%'
+order by
+	id desc
+
+
+</select>
+
+</mapper>

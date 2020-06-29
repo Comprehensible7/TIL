@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- DB접속정보 값을 가지고 있는 파일 설정 -->
+	<!-- 오라클 로그인정보와 비밀번호가 들어가있는 파일, 읽어오는 파일 명 -->
+	<!-- 불러오는 파일은 고정값이 아니다 -->
+	<properties resource="db.properties" />
+
+	<!-- Java Class에 대한 alias 지정 -->
+	<!-- 쿼리문까지 다 등록하고 난 뒤에 작성 -->
+	<!-- 추가부분은 항상 기억해고 있어야함 -->
+	<typeAliases>
+		<typeAlias type="test.vo.Person" alias="person"/>
+	</typeAliases>
+	
+	<!-- DB접속 정보 셋팅 -->
+	<!-- properties에서 가져온 정보를 여기서 사용한다 -->
+	<!-- insert를 입력해줄때 위쪽은 컬럼의 이름 -->
+	<!-- 아래쪽은 변수의 이름을 작성한다 -->
+	<!-- 위에 #{}는 vo에서 getter를 호출한다 -->
+	<!-- 변수값을 입력해줘야 한다 -->
+	<!-- 변수의 이름은 맴버변수로 해준다 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- Mapper 파일 include -->
+	<!-- Mapper.xml만들고 난뒤에 등록가능 -->
+	<!-- 추가부분은 항상 기억해고 있어야함 -->
+	<!-- 3번째 -->
+	<mappers>
+		<mapper resource="personMapper.xml"/>
+	</mappers>
+	
+	
+	
+</configuration>
