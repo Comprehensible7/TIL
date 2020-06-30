@@ -7,12 +7,13 @@ Today What I Learned
   - Mybatis
 
 - HTML
+  - Basic
   - CSS
   
 - Spring
 
 - Android
-  - Project
+  - Basic
   
 - Kotlin
   - Basic
