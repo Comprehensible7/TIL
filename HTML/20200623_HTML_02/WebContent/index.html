@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test</title>
+</head>
+<body>
+
+		<strong>굵게 강조할 텍스트</strong>
+	<b>
+		<i>굵게</i> 표시할 <mark>텍스트</mark>
+	</b>
+	
+	야외 텐트를 <span>닮은</span> 건축물 <mark>"테쉬폰"</mark>
+	
+	<br>
+	
+	<ul>
+		<li>일반 전화 : (국번없이)1330</li>
+		<li>휴대 전화 : 064-1330</li>
+	</ul>
+	
+	<!-- 타입에 숫자 또는 알파벳이 들어가면 순서부분이 변경된다. -->
+	<!-- reversed는 맨 아래에서부터 순서기호가 부여된다. -->
+	<ol type="a" >
+		<li>한라수목원</li>
+		<li>화순 금모래 해수욕장</li>
+	</ol>
+	
+	<ol type="a" start="3">
+		<li>산방산</li>
+		<li>용머리해안</li>
+		<li>송악산</li>
+	</ol>
+	<!-- alt는 이미지에 대한 설명 -->
+	<img alt = "끄덕" src = "images/2.gif" width="300" height="300">
+	
+	<br>
+	
+	<a href="https://www.naver.com">Naver</a>
+	<br>
+	<a href="https://www.google.co.kr">Google</a>
+	<br>
+	<a href="link.html" target="_blank">링크페이지</a>
+	
+	
+	<br>
+	<!-- #이 의미하는 것은 #뒤의 값을 찾아가라는 의미 -->
+	<a href = "#content1">앵커</a>
+	
+	<p>
+	1. 동해물과 백두산이 마르고 닳도록
+	하느님이 보우하사 우리나라 만세
+	무궁화 삼천리 화려 강산
+	대한 사람 대한으로 길이 보전하세
+	</p>
+	
+	<p>
+	2. 남산 위에 저 소나무 철갑을 두른 듯
+	바람 서리 불변함은 우리 기상일세
+	무궁화 삼천리 화려 강산
+	대한 사람 대한으로 길이 보전하세
+	</p>
+	
+	<p>
+	3. 가을 하늘 공활한데 높고 구름 없이
+	밝은 달은 우리 가슴 일편단심일세
+	무궁화 삼천리 화려 강산
+	대한 사람 대한으로 길이 보전하세
+	</p>
+	
+	<p>
+	4. 이 기상과 이 맘으로 충성을 다하여
+	괴로우나 즐거우나 나라 사랑하세
+	무궁화 삼천리 화려 강산
+	대한 사람 대한으로 길이 보전하세
+	</p>
+	
+	<h1 id = "content1">이동할 위치</h1>
+	
+	
+	<br>
+	
+	<!-- border 는 테이블 속성임 -->
+	<table border="1">
+		
+		<!-- 첫번째 줄 -->
+		<!-- tr은 하나의 행 -->
+		<tr>
+			<!-- 제목 부분 -->
+			<!-- th는 하나의 열을 두껍게 처리 -->
+			<th>제목 셀</th>
+			<td>1행 2열</td>
+			<td>1행 3열</td>
+			<td>1행 4열</td>
+			<td>1행 5열</td>
+			
+		</tr>
+		
+		<tr>
+			<!-- colspan은 행 또는 열 합치기 기능 -->
+			<th>제목 셀</th>
+			<td colspan = "4">2행 2열</td>
+			<!-- <td>2행 3열</td>
+			<td>2행 4열</td>
+			<td>1행 5열</td> -->
+		
+		</tr>
+		
+		<tr>
+			<th>제목 셀</th>
+			<td>3행 2열</td>
+			<td>3행 3열</td>
+			<td>3행 4열</td>
+			<td>1행 5열</td>
+		
+		</tr>
+		
+	</table>
+
+	<br>
+
+	<table border="1" style="width:500px;">
+		<tr>
+			<th>이름</th>
+			<td style="width:120px;"></td>
+			<th>연락처</th>
+			<td style="width:120px;"></td>
+		</tr>
+		
+		<tr>
+			<th>주소</th>
+			<td colspan = "4"></td>
+		</tr>
+		
+		<tr>
+			<th>자기소개</th>
+			<td colspan = "4"></td>
+		</tr>
+	</table>
+	
+	<br>
+	
+	<table border = "1" style="width:400px;">
+		
+		<tr>
+			<td colspan = "3">1</td>
+			<td rowspan = "3">2</td>
+		</tr>
+		
+		<tr>
+			<td rowspan="3">3</td>
+			<td>4</td>
+			<td>5</td>
+		</tr>
+		
+		<tr>
+			<td>6</td>
+			<td>7</td>
+		</tr>
+		
+		<tr>
+			<td colspan = "3">8</td>
+		</tr>
+	
+	</table>
+	
+	<br>
+	
+	<table border = "1" style="width:400px;">
+		
+		<!-- thead, tbody, tfoot선언은 범위만 지정해주는 것임 -->
+		<!-- 제목 부분 -->
+		<thead>
+		<tr>
+			<td >1</td>
+			<td >1</td>
+			<td >1</td>
+			<td >1</td>
+		</tr>
+		</thead>
+		
+		<!-- 본문 -->
+		<tbody>
+		<tr>
+			<td >1</td>
+			<td >1</td>
+			<td >1</td>
+			<td >1</td>
+		</tr>
+		
+		<tr>
+			<td >1</td>
+			<td >1</td>
+			<td >1</td>
+			<td >1</td>
+		</tr>
+		
+		<tr>
+			<td >1</td>
+			<td >1</td>
+			<td >1</td>
+			<td >1</td>
+		</tr>
+		
+		<tr>
+			<td >1</td>
+			<td >1</td>
+			<td >1</td>
+			<td >1</td>
+		</tr>
+		</tbody>
+		
+		<!-- 요약 부분 -->
+		<tfoot>
+		<tr>
+			<td >1</td>
+			<td >1</td>
+			<td >1</td>
+			<td >1</td>
+		</tr>
+		</tfoot>
+		
+	</table>
+
+	
+	
+		
+	
+</body>
+</html>

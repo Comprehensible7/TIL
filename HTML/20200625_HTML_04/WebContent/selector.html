@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>선택자 연습</title>
+
+	<style type="text/css">
+	
+	*{
+		font-family: monospace;
+		font-size: 1em;
+		font-weight:bold;
+	}
+	
+	/* .클래스 이름 을 작성하면 해당 클래스를 선택이 가능하다 */
+	.header{
+		color:red;
+	}
+	
+	.fs20{
+		font-size:20px;
+	}
+	
+	/* 아이디는 동일한것이 존재하면 안된다. 하나만 적용됨 */
+	/* !important는 순위가 올라감 */
+	#colorBlue{
+		color:blue !important;
+	}
+	
+	/* 그룹 선택자 */
+	h2, h3, a ,b, i, #colorBlue, fs20{
+		color:red;
+	}
+	
+	ul .list{
+		background-color: green;
+	}
+	
+	#sub > li {
+		background-color: yellow;
+	}
+	
+						
+	
+	</style>
+	
+
+</head>
+<body>
+
+	<!-- 하나의 태그는 여러개의 클래스를 가질 수 있음 -->
+	<!-- 동일한 이름의 클래스는 여러개의 태그를 가질 수 있음 -->
+	<h2>Header-0</h2>
+	<h2 id="colorBlue">Header-1</h2>
+	<h2>Header-2</h2>
+	<!-- 얘는 클래스가 2개임 -->
+	<h2 class="header fs20">Header-3</h2>
+	<h2>Header-4</h2>
+	
+	<h3>Header-5</h3>
+	<h3 class="header">Header-6</h3>
+	<h3>Header-7</h3>
+	
+	
+	<ul>
+			<li class="list">1</li>
+			<li class="list">2</li>
+			<li class="list">3</li>
+			<li class="list">4
+			
+				<ul id="sub">
+					<li>4-1</li>
+					<li>4-2</li>
+					<li>4-3</li>
+				</ul>
+			</li>
+	
+	
+	</ul>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

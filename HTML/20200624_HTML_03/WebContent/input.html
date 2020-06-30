@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>태그 연습</title>
+</head>
+<body>
+
+	<form action="">
+	
+		<input type="hidden" value="보이지 않는 값">
+		
+		<!-- 인풋 값 앞에 내용 작성해도 됨. -->
+		<!-- disabled 는 비활성화 -->
+		<!-- readonly는 읽기전용 -->
+		ID : <input type="text" disabled="disabled"readonly="readonly" value="미리 넣어논 값" > <br>
+		<!-- label은 영역을 묶어준다. 내용을 작성하면 됨. -->
+		<!-- value는 내용 값 -->
+		<!-- 글자 입력 전에 미리 보여지는 내용 -->
+		<!-- size는 사이즈 키우고 줄일 수 있다. -->
+		<!-- maxlength는 입력할 수 있는 갯수 -->
+		<!-- checked는 체크된 상태로 나옴 -->
+		<br>
+		<label>ID : </label><input type="text" placeholder="ID는 3~8글자 사이로 입력"  size="20" maxlength="4"/><input type="button" value="중복확인"/>
+		<label>PW : </label><input type="password"/><br>
+		<label>나이 : </label><input type="number"/><br>
+		<label>취미</label>
+		축구 : <input type="checkbox" checked="checked"/>
+		농구 : <input type="checkbox"/>
+		야구 : <input type="checkbox"/><br>
+		<label>성별</label><br>
+		<!-- name은 속성을 알려줌 -->
+		<!-- name속성을 동일하게 지정해주면 그룹으로 묶임 -->
+		남성 : <input type="radio" name="gender" checked="checked">
+		여성 : <input type="radio" name="gender">
+		
+		
+		
+		<!-- select box를 만들 수 있다. -->
+		<!-- option에는 보여주고 싶은 항목을 작성한다 -->
+		<!-- selected를 입력 시 기본적으로 선택되어 출력된다. -->
+		사이트 : <select>
+			<option>--선택--</option>
+			<option selected="selected">Google</option>
+			<option>Naver</option>
+			<option>Daum</option>
+		</select>
+	
+		<br>
+		
+		<label>첨부파일</label>
+		<input type="file"/>
+		<br>
+		
+		<!-- 얘도 많이 씀 -->
+		<textarea rows="4" cols="50">미리 보여질 내용</textarea> 
+		<!-- 색상을 선택, 적용 하려면 다른 기능과 연결이 필요하다 -->
+		<input type="color"/>
+		<!-- 볼륨조절이나 범위 설정할 때 사용함 -->
+		<input type="range"/>
+		<br>
+		
+		
+		<!-- submit 버튼은 form에 하나만 존재 가능 -->
+		<input type="submit" value="회원가입"/>
+		<input type="reset" value="취소"/>
+	
+	</form>
+	
+	<!-- div내부에 있는 내용들을 포장, div에 효과를 주었을 때 적용됨 -->
+	<div>
+	
+	<table border="1">
+	
+		<tr>
+			<td>1번 테이블</td>
+		</tr>
+	
+	</table>
+	
+	</div>
+	
+	
+	<table border="1">
+	
+		<tr>
+			<td>1번 테이블</td>
+		</tr>
+	
+	</table>
+	
+	
+
+</body>
+</html>

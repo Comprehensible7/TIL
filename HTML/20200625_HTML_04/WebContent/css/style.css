@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+/* h2의 값을 변경 */
+h2{
+	color:blue;
+}
+
+/* p태그에 속한 값들의 내용을 변경 가능 */
+p{
+	font-size:0.9em;
+	line-height:2.0;
+}
