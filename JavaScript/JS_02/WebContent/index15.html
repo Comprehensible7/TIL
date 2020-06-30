@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<script type="text/javascript">
+	
+	// Person 객체 생성
+	var person = {
+			name : '윤인성',
+			eat : function(food){
+				alert(this.name + '이 ' + food + ' 을/를 먹습니다.');
+			}
+	};
+	
+	 person.eat('밥');
+	 
+	
+	
+	// 객체속성 추가 제거해보기
+	var student = {};
+	
+	student.이름 = '윤인성';
+	student.취미 = '악기';
+	student.특기 = '프로그래밍';
+	student.장래희망 = '생명공학자';
+	
+	student.toString = function(){
+		var output = '';
+		
+		for (var key in this) {
+			
+			if(key != 'toString'){
+				output += key + '\t' + this[key]+'\n';
+			}
+		}
+		
+		return output;
+	};
+	
+	alert(student.toString());
+	
+	// 삭제
+	delete(student.장래희망);
+	
+	alert(student.toString());
+	
+	
+	
+	</script>
+	
+</head>
+<body>
+
+</body>
+</html>
