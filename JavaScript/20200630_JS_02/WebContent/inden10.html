@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<script type="text/javascript">
+	
+	
+		// Js에서는 함수가 자료형이므로 리턴 가능
+		function returnFunction(){
+			return function(){
+				alert('Hello Function...!')
+			};
+		}
+		
+		/* returnFunction()(); */
+		
+		var rfnc = returnFunction();
+		
+		rfnc();
+	
+	</script>
+
+
+</head>
+<body>
+
+</body>
+</html>

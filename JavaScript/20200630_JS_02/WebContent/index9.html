@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<script type="text/javascript">
+	
+		// 메서드처럼...
+		// 선언적 함수
+		function callTenTimes(callback){
+			for (var i = 0; i < 10; i++) {
+				callback();
+			}
+		}
+		
+		// 자료형으로 사용.
+		// 선언방식은 int a = 10; 이런느낌임
+		var callback = function(){
+			alert('함수 호출');
+		};
+		
+		callTenTimes(callback);
+	
+	</script>
+	
+</head>
+<body>
+
+</body>
+</html>

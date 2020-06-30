@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<script type="text/javascript">
+	
+	
+		// 함수 재정의
+		// 선언적 함수
+		// 메서드처럼 생각하면 된다.
+		// 선언적 함수는 미리 생성됨
+		
+		fnc1();
+		
+		function fnc1(){
+			alert('함수 A');
+		}
+		
+		function fnc1(){
+			alert('함수 B');
+		}
+		
+		/* fnc1(); */
+		
+		// 익명함수 생성 및 변수대입
+		// 자료형으로 사용됨
+		// 얘는 먼저 실행 불가
+		// 선언방식은 int a = 10; 이런느낌임
+		
+	/* 	var fnc2 = function(){
+			alert('함수 A');
+		};
+		var fnc2 = function(){
+			alert('함수 B');
+		};
+		
+		fnc2();
+	 */
+	 
+	 // 아래에서 먼저 생성되었지만 여기서 재정의함.
+	 var fnc3 = function(){
+		 alert('함수 A');
+	 };
+	 
+	 // 먼저 생성된 함수
+	 function fnc3(){
+		 alert('함수 B');
+	 }
+	 
+	 // 출력은 A가 나옴
+	 fnc3();
+	 
+	
+	 function f(x){
+		 return x * x;
+	 }
+	 
+	 var n = f(3);
+	 
+	 alert(n);
+	 
+	</script>
+		
+</head>
+<body>
+
+</body>
+</html>

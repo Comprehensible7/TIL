@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<script type="text/javascript">
+	
+		// 숫자를 문자열로 자동 형변환
+		alert('52' + 273);
+		
+		// 문자열을 숫자로 변환해서 계산함
+		alert('52' * 273);
+	
+		// NaN = Not A Number 메세지 출력
+		// 숫자가 아닌 값을 위와 같이 표현함
+		alert('문자' * 273);
+		
+		// prompt는 스트링으로만 받아오기때문에 숫자로 받아오려면 별도로 넘버 선언을 해줘야한다
+		var input = prompt('숫자를 입력하새요');
+		
+		// 입력타입 확인
+		alert(typeof(input));
+		
+		// 숫자 또는 스트링 입력 시
+		var input2 = prompt('숫자를 입력하세요');
+		var numberInput = Number(input2);
+		var stringInput = String(input2);
+		
+		alert(typeof(numberInput) + ' : ' + numberInput);
+		alert(typeof(stringInput) + ' : ' + stringInput);
+		
+		// VAR는 변수를 선언하기 위해 사용하는 키워드
+		
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<script type="text/javascript">
+	
+		// 문자열 생성
+		var willEval = '';
+		willEval += 'var number = 10;';
+		willEval += 'alert(number);';
+		
+		// eval()함수 호출
+		eval(willEval);
+		
+		var number = 1/0;
+		alert(number + ' : ' + isFinite(number));
+	
+		if(NaN == NaN){
+			alert('NaN == NaN');
+		} else {
+			alert('NaN != NaN');
+		}
+		
+		var num = '1234abc';
+		
+		// 문자열 내부에 숫자가 아닌게 하나라도 있으면 NaN으로 출력
+		alert(Number(num));
+		// 숫자인 부분까지만 숫자로 변환해준다
+		alert(parseInt(num));
+		
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>
