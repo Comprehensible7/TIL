@@ -5,14 +5,17 @@ Today What I Learned
 - Java
   - Basic
   - Mybatis
+  - Example
 
 - HTML
+  - Basic
   - CSS
   
 - Spring
+  - Basic
 
 - Android
-  - Project
+  - Basic
   
 - Kotlin
   - Basic
