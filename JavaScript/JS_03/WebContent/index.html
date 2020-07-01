@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<script type="text/javascript">
+	
+		// 변수 선언
+		var characters = prompt('사용할 비밀번호를 입력해 주세요.', '6글자 이상');
+		
+		// 출력
+		if(characters.length < 6){
+			alert('6글자 이상으로 입력하세요.')
+		} else {
+			alert('잘했어요!');
+		}
+		
+		var str = 'abcd EFGH';
+		
+		alert(str.charAt(3));
+		
+		// 위의 문자열에 아래의 문자열을 이어서 
+		alert(str.concat("ijk"));
+		alert(str+'ijk');
+	
+		
+		var index = str.indexOf('cd');
+		
+		// c가 시작하는 index값이 나온다
+		alert(index);
+	
+		// 바꾸기
+		alert(str.replace('cd','CD'));
+		
+		// 문자열 추출
+		alert(str.slice(1,6));
+		
+		var str2 = "2020-07-01";
+		
+		// 배열 잘라서 리턴하기
+		var array = str2.split('-');
+		
+		for (var i = 0; i < array.length; i++) {
+			alert(array[i]);
+		}
+		
+		// substring, substr
+		// count만큼 문자열 잘라서 리턴
+		alert(str.substr(2,7));
+		
+		// end까지 문자열 잘라서 리턴
+		alert(str.substring(2,7));
+		
+		
+		
+	
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>

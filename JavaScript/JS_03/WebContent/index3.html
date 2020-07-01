@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<script type="text/javascript">
+	
+	/* // 새창열기
+	window.open('https://www.naver.com', 'child', 'width=600, height=300', true); */
+	
+	
+	
+	// 새창만들고 이동시키기
+	// 변수 선언
+	var child = window.open('','','width=300, height=200');
+
+	var width = screen.width;	// 1000
+	
+	var height = screen.height;	// 500
+	
+	child.document.write('<h1>이것은 화면보호기 휴먼.</h1>');
+	
+	child.moveTo(0,0);
+	
+	child.resizeTo(width, height);
+	
+	// 1초마다 함수 실행
+	setInterval(function(){
+		child.resizeBy(-20, -20);
+		child.moveBy(10,10);
+	},100);
+	
+	
+	</script>
+
+</head>
+<body>
+
+</body>
+</html>
