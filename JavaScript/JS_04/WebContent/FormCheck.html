@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>문서 객체 모델(Document Object Model - DOM)</title>
+
+<script type="text/javascript">
+
+	window.onload = function(){
+
+		// 변수생성	
+					// 얘는 메서드역할
+		// document는 HTML문서를 뜻함
+		// 아래 작성한 header값을 덮어씌운다
+								// 매개변수로 가져오고싶은 아이디를 작성
+		var header = document.getElementById('header')
+		
+						// 문자열 생성
+						// 아래에서 입력한 문자열을 대체한다.
+		// header.innerHTML = 'with getElementById()';
+		header.innerHTML = '회원가입 Form';
+		
+	};
+	
+	function formCheck(){
+		// onsubmit을 처리할 함수는 반드시 return을 true or false를 해야한다.
+		// 사용자가 입력한 id값을 읽어와서 입력을 했는지 판단을 하고 입력하지 않았으면 경고창을 띄워준다.
+		// alert(1);
+		
+		// 태그를 자바스크립트의 객체로 만들어줌
+		var user_id = document.getElementById('user_id').value;
+		var user_pw = document.getElementById('user_pw').value;
+		var user_pwc = document.getElementById('user_pwc').value;
+		
+		// 여러개를 가져오므로 elements라고 작성
+		// .value를 안적는 이유는 체크여부를 확인하기 위함이지 값을 가져오는것이 아니다.
+		// name속성이 name매개변수와 일치하는 문서 객체를 배열로 가져온다.
+		var gender = document.getElementsByName('gender');
+
+		
+		// alert(user_id);
+		
+		if(user_id == ''){
+			alert('ID는 필수 입력사항 입니다.');
+			return false;
+		}
+		
+		// id가 3글자 이상 8글자 이하 일경우에만 전달되도록 처리를 추가해주세요.
+		else if(user_id.length < 3 || user_id.length > 8 ){
+			alert('ID는 3글자 이상 8글자 이하로 입력해 주세요');
+			
+			return false;
+			
+			// 아이디 입력 시 숫자는 사용못함
+		} for (var i = 0; i < user_id.length; i++) {
+			var ch = user_id.charAt(i);
+			//alert(ch);
+			
+			// isNaN() - 매개변수가 숫자인지 검사하는 함수입니다.(NaN은 Not a Number입니다.)
+			if(!isNaN(ch)){
+				alert('ID는 숫자입력이 불가합니다.');
+				break;
+			}
+		}
+		
+		// 비밀번호는 입력을 반드시 해야하고 4글자 이상 10글자 이하로 작성해야 한다.
+		if(user_pw == ''){
+			alert('PW는 반드시 입력해야 합니다.');
+			return false;
+			
+		}else if(user_pw.length < 4 || user_pw.length > 10){
+			alert('비밀번호는 4글자 이상 10글자 이하로 입력해 주세요');
+		
+			// 비밀번호 검증
+		}else if (user_pw.length != user_pwc.length) {
+			alert('비밀번호는 동일해야 합니다.');
+			
+			return false
+		}
+		
+		// 성별을 선택했는지 판단
+		// Check완료인지 확인하기 위한 용도의 변수
+		var cnt = 0;
+		for (var i = 0; i <gender.length; i++) {
+			
+			if(gender[i].checked == true){
+				cnt++;
+			} 
+		}
+		if(cnt == 0){
+			alert('성별을 선택해 주세요');
+			return false;
+		}
+		// alert(cnt);
+		
+		return true;
+	}
+
+</script>
+
+</head>
+<body>
+
+					
+	<h1 id="header" >Header - 0</h1>
+						<!-- submit눌렀을때 실행 할 위치, 찾음 -->
+		<form action = "" onsubmit="return formCheck()">
+		
+		ID : <input type="text" id="user_id"><br>
+		PW : <input type="password" id="user_pw"><br>
+		Password Check : <input type="password" id="user_pwc"><br>
+	
+		<!-- radio버튼 중복선택을 방지하기위해 name속성값을 동일하게 지정해준다 -->
+		남성 <input type="radio" name="gender"> 여성 <input type="radio" name="gender"> <br>
+		
+		
+		<input type="submit" value="회원가입"> <!-- onClick="alert('회원가입 완료...!')" -->
+		<input type="button" value="취소" onClick="alert('회원가입 취소...!')">
+		
+		</form>
+
+
+</body>
+</html>
