@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Interface Mapper연결 -->
+<mapper namespace="com.scit39.test23.dao.MemberMapper">
+
+<!-- 입력 -->
+<insert id="memberJoin" parameterType="member">
+
+insert into member_tb(
+	
+	member_id
+	, member_pw
+	, member_nm
+	, member_birth
+
+)values(
+	#{member_id}
+	, #{member_pw}
+	, #{member_nm}
+	, #{member_birth}
+)	
+
+</insert>
+
+<!-- 전체조회 -->
+<select id="memberList" resultType="member">
+
+	select
+		member_id
+		, member_pw
+		, member_nm
+		, member_birth
+		, to_char(member_indate, 'YY-MM-DD') as member_indate
+		
+	from 
+		member_tb
+		
+	order by
+		member_nm
+		
+
+</select>
+
+<!-- 삭제 -->
+<delete id="deleteMember" parameterType="string">
+
+delete from
+	member_tb
+
+where
+	member_id = #{member_id}
+	
+
+</delete>
+
+<!-- 부분조회 -->
+<select id="searchMember" resultType="member" parameterType="HashMap">
+
+	select
+		member_id
+		, member_pw
+		, member_nm
+		, member_birth
+		, to_char(member_indate, 'YYYY-MM-DD') as member_indate
+		
+	from 
+		member_tb
+		
+	where 
+		member_birth > #{member_min} and #{member_max} > member_birth
+		
+	order by
+		member_nm
+		
+
+</select>
+
+
+<update id="memberUpdate" parameterType="string">
+
+update member_tb
+	set
+		member_pw = #{member_pw}
+		, member_nm = #{member_nm}
+		, member_birth = #{member_birth}
+		, to_char(member_indate, 'YYYY-MM-DD') as member_indate
+	
+	where
+		member_id = #{member_id}
+		
+</update>
+
+</mapper>

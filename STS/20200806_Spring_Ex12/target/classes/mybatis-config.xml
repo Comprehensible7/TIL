@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!-- VO  -->
+	<typeAliases>
+		<typeAlias type="com.scit39.web12.vo.HospitalVO" alias="hos"/>
+	</typeAliases>
+
+<!-- mapper/mapper.xml -->
+	<mappers>
+		<mapper resource="mapper/hospitalMapper.xml"/>
+	</mappers>
+</configuration>

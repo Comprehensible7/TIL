@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+<!-- vo의 별칭을 지정 및 vo연결 -->
+	<typeAliases>
+		<typeAlias type="com.scit39.test20.vo.Person" alias="person"/>
+	</typeAliases>
+	
+<!-- person 쿼리문쪽 연결 -->
+<!-- 아래의 xml은 dao와 연결됨 -->
+	<mappers>
+		<mapper resource="mapper/personMapper.xml" />
+	</mappers>
+</configuration>

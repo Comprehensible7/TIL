@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao의 Interface 연결 -->
+<mapper namespace="com.scit39.test21.dao.MemberDAO">
+
+<!-- 전달된 Person 객체의 값을 DB에 저장 -->
+<insert id="memberJoin" parameterType="member">
+
+	insert into member_tab(
+	
+		mem_id
+		, mem_pw
+		, mem_nm
+	
+	)values(
+		
+		#{mem_id}
+		, #{mem_pw}
+		, #{mem_nm}
+		
+	)
+
+</insert>
+
+	
+</mapper>

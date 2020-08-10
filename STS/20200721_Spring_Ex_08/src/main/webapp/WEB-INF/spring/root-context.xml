@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- db.properties 읽어오기 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:db.properties</value>
+		</property>
+	</bean>
+	
+	<!-- db.properties의 이름과 동일해야 한다 -->
+	<!-- db.properties의 설정 값을 읽어서 setting -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${user}" />
+		<property name="password" value="${password}" />
+	</bean>
+	
+	<!-- ref는 참조한다는 의미 -->	
+	<!-- 위의 db.properties의 id를 확인해보면 여기서 값을 참조한다는 것을 알수있다. -->
+	<!-- 트랙잭션 관리를 위한 빈설정 -->
+	<!-- 내 쿼리가 실행,적용,종료가 한번 이루어지는것이 트랜잭션임 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- sqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+	
+	<!-- sqlSession -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+
+</beans>
+
+<!-- class path:db.properties는 src/main/resources에 보면 확인 가능 
+	위치와 파일명은 꼭 확인해야 한다. -->
+	
+	<!-- 개발자가 직접관리하다가 스프링이 관리하도록 넘어간것이 IOC
+	제어의 역전이라는 의미 inversion of control
+	 -->
+	 
+	 <!-- 
+	 스프링에서 중요하게 봐야하는 요소들
+
+	  1. DI : 디팬던시 인젝션도 IOC때문에 발생하는 것임
+	  2. IOC
+	  
+	  -->

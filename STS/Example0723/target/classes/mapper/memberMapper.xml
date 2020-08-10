@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sesoc.test0723.dao.MemberMapper">
+	<insert id="memberJoin" parameterType="member">
+		INSERT INTO
+			member_tb
+		VALUES (
+			  #{member_id}
+			, #{member_pw}
+			, #{member_nm}
+			, #{member_birth}
+			, SYSDATE
+		)
+	</insert>
+	
+	<select id="joinList" resultType="member">
+		SELECT
+			  member_id
+			, member_nm
+			, member_birth
+			, TO_CHAR(member_indate, 'YY-MM-DD') AS member_indate
+		FROM
+			member_tb
+		ORDER BY
+			member_nm
+	</select>
+	
+	<delete id="memberDelete" parameterType="string">
+		DELETE FROM
+			member_tb
+		WHERE
+			member_id = #{member_id}
+	</delete>
+	
+	<select id="searchList" parameterType="map" resultType="member">
+		SELECT
+			  member_id
+			, member_nm
+			, member_birth
+			, TO_CHAR(member_indate, 'YY-MM-DD') AS member_indate
+		FROM
+			member_tb
+		WHERE
+			TO_DATE(member_birth, 'YYYYMMDD')
+				BETWEEN
+					TO_DATE(#{start_date}, 'YYYYMMDD')
+				AND
+					TO_DATE(#{end_date}, 'YYYYMMDD')
+		ORDER BY
+			member_nm
+	</select>
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.scit.web6.dao.MemberMapper">
+
+<insert id="memberJoin" parameterType="member">
+	insert into
+		member_table(
+			member_id
+			,member_pw
+			,member_nm
+		) values (
+			#{member_id}
+			,#{member_pw}
+			,#{member_nm}
+		)
+</insert>
+
+<select id="joinList" resultType="member">
+	select
+	    member_id   
+	    ,member_pw
+	    ,member_nm
+	    ,to_char(member_indate, 'YYYY-MM-DD') as member_indate
+	from
+	    member_table
+	order by
+	    member_nm
+</select>
+	
+<delete id="memberDelete" parameterType="String">
+	delete from
+	    member_table
+	where
+	    member_id=#{member_id}
+</delete>
+
+<select id="memberSelectOne" parameterType="String" resultType="member">
+	select
+		member_id
+		,member_pw
+		,member_nm
+		,member_indate
+	from
+		member_table
+	where
+		member_id = #{member_id}
+</select>
+
+<update id="memberUpdate" parameterType="member">
+	update
+		member_table
+	set
+		member_pw = #{member_pw}
+		,member_nm = #{member_nm}
+	where
+		member_id = #{member_id}
+</update>
+
+</mapper>

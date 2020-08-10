@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.scit.web6.dao.BoardMapper">
+
+<insert id="boardWrite" parameterType="board">
+
+insert into
+	board_table(
+		board_no
+		, member_id
+		, board_title
+		, board_context
+		
+		<if test="originalfile != null">
+			, originalfile
+			, savedfile
+		</if>
+	
+	
+	)values(
+	
+		board_seq.nextVal
+		, #{member_id}
+		, #{board_title}
+		, #{board_context}
+	
+		<if test="originalfile != null">
+			, #{originalfile}
+			, #{savedfile}
+		</if>
+		
+	)
+
+</insert>
+
+<select id="boardList" resultType="hashmap">
+
+select
+    b.board_no as board_no
+    , b.member_id as member_id
+    , b.board_title as board_title
+    , b.board_context as board_context
+    , to_char(b.board_indate,'YYYY-MM-DD') as board_indate
+    , b.board_hits as board_hits
+    , m.member_nm as member_nm
+    
+from
+    board_table b, member_table m
+    
+where 
+    b.member_id = m.member_id
+
+order by
+    board_no desc
+
+</select>
+
+<update id="updateHits" parameterType="int">
+
+update 
+	board_table
+	
+set
+	board_hits = board_hits + 1
+where
+	board_no = #{board_no}
+
+
+</update>
+
+
+<select id="boardRead" resultType="hashmap" parameterType="int">
+
+select
+    b.board_no as board_no
+    , b.member_id as member_id
+    , b.board_title as board_title
+    , b.board_context as board_context
+    , to_char(b.board_indate,'YYYY-MM-DD') as board_indate
+    , b.board_hits as board_hits
+    , m.member_nm as member_nm
+    
+from
+    board_table b, member_table m
+    
+where 
+    b.member_id = m.member_id
+    
+and
+	b.board_no = #{board_no}
+
+
+</select>
+
+
+
+<update id="boardUpdate" parameterType="board">
+
+update	
+	board_table
+set
+		
+		board_title = #{board_title}
+		, board_context = #{board_context}
+
+where
+	board_no = #{board_no}
+	
+<!-- and
+	member_id = #{member_id} -->
+
+
+</update>
+
+
+<delete id="boardDelete" parameterType="int">
+
+delete 
+	from
+		board_table
+where
+	board_no = #{board_no}
+<!-- and
+	member_id = #{member_id} -->
+
+
+</delete>
+
+<select id="searchBoard" parameterType="hashmap" resultType="hashmap">
+
+select
+    b.board_no as board_no
+    , b.member_id as member_id
+    , b.board_title as board_title
+    , b.board_context as board_context
+    , to_char(b.board_indate,'YYYY-MM-DD') as board_indate
+    , b.board_hits as board_hits
+    , m.member_nm as member_nm
+    
+from
+    board_table b, member_table m
+    
+where 
+	    b.member_id = m.member_id
+	
+<if test="searchType == 'title' ">
+
+and 
+	b.board_title like '%' || #{searchText} || '%'
+
+</if>
+
+<if test="searchType == 'name' ">
+
+and 
+	m.member_nm like '%' || #{searchText} || '%'
+
+</if>
+
+
+order by
+    board_no desc
+    
+</select>
+
+
+</mapper>

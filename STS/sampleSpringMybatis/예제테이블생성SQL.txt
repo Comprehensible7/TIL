@@ -1,0 +1,9 @@
+[ sampleSpringMybatis 예제에서 사용할 테이블 ]
+
+--개인 정보를 저장하는 테이블--
+create table person (
+	name	varchar2(20) not null,
+	age		number(3) default 0,
+	address	varchar2(100)
+);
+

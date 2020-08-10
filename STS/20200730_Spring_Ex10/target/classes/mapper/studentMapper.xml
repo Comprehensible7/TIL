@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- interface연결 -->
+<mapper namespace="com.scit39.web10.dao.StudentMapper">
+
+<insert id="studentJoin" parameterType="student">
+
+insert into
+	student_tb(
+	
+	student_id
+	, student_pw
+	, student_name
+	, student_subject
+	
+	) values (
+	
+	#{student_id}
+	, #{student_pw}
+	, #{student_name}
+	, #{student_subject}
+	
+	)
+
+</insert>
+
+
+<select id="studentAll" resultType="student">
+
+select 
+	row_number() over(order by student_id) row_num
+	, student_id
+	, student_pw
+	, student_name
+	, student_subject
+	, to_char(student_indate, 'YYYY-MM-DD') as student_indate
+	
+from 
+	student_tb
+
+order by
+	student_id
+
+
+</select>
+
+<delete id="deleteStudent" parameterType="string">
+	delete from
+		student_tb
+	where
+		student_id = #{student_id}
+
+
+</delete>
+
+<update id="updateStudent" parameterType="student">
+
+	update 
+		student_tb
+	set
+		student_pw = #{student_pw}
+		, student_name = #{student_name}
+		, student_subject = #{student_subject}
+	
+	where
+		student_id = #{student_id}
+	
+
+</update>
+
+<!-- 조건 검색 -->
+<select id="searchStudent" parameterType="string" resultType="student">
+
+select
+	student_id
+	, student_pw
+	, student_name
+	, student_subject
+	, to_char(student_indate, 'YY-MM-DD') as student_indate
+	
+from 
+	student_tb
+
+where
+		upper(student_id) like '%' || upper(#{student_id}) || '%'
+		
+	
+order by
+	student_name desc
+
+
+</select>
+	
+
+</mapper>

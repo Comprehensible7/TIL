@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 인터페이스 연결 -->
+<mapper namespace="com.scit39.web12.dao.HospitalMapper">
+
+<insert id="insertInfo" parameterType="hos">
+
+insert into
+	hospital_serv (
+	
+	h_no
+	, h_hnum
+	, h_sec
+	, h_loc
+	, h_doc
+	, h_name
+	, h_sup
+	, h_info
+	, h_res
+	, h_price
+
+	
+	) values (
+	
+	h_seq.nextVal
+	, #{h_hnum}
+	, #{h_sec}
+	, #{h_loc}
+	, #{h_doc}
+	, #{h_name}
+	, #{h_sup}
+	, #{h_info}
+	, #{h_res}
+	, #{h_price}
+	
+	
+	)
+
+</insert>
+
+<select id="allInfo" resultType="hos">
+
+select
+	row_number() over(order by h_no) row_num
+	, h_no
+	, h_hnum
+	, h_sec
+	, h_loc
+	, h_doc
+	, h_name
+	, h_sup
+	, h_info
+	, h_res
+	, h_price
+	, to_char(h_indate, 'YYYY-MM-DD') as h_indate 
+	
+	from
+		hospital_serv
+
+	order by
+		h_no 
+
+
+
+</select>
+
+<delete id="deleteInfo" parameterType="int">
+
+delete
+	from
+		hospital_serv
+	
+	where
+		h_no = #{h_no}
+	
+
+
+</delete>
+
+
+<update id="updateInfo" parameterType="hos">
+
+update
+	hospital_serv
+set
+	h_no = #{h_no}
+	, h_hnum = #{h_hnum}
+	, h_sec = #{h_sec}
+	, h_loc = #{h_loc}
+	, h_doc = #{h_doc}
+	, h_name = #{h_name}
+	, h_sup = #{h_sup}
+	, h_info = #{h_info}
+	, h_res = #{h_res}
+	, h_price = #{h_price}
+
+where
+	h_no = #{h_no}
+
+
+</update>
+
+
+<select id="selectPa" resultType="hos" parameterType="int" >
+
+select
+	row_number() over(order by h_no) row_num
+	, h_no
+	, h_hnum
+	, h_sec
+	, h_loc
+	, h_doc
+	, h_name
+	, h_sup
+	, h_info
+	, h_res
+	, h_price
+	, to_char(h_indate, 'YYYY-MM-DD') as h_indate 
+	
+	from
+		hospital_serv
+		
+	where
+		h_no = #{h_no}
+
+
+
+
+</select>
+
+
+
+
+
+
+
+</mapper>

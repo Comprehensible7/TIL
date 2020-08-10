@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao의 Interface 연결 -->
+<mapper namespace="com.scit.web6.dao.MemberMapper">
+
+<!-- 전달된 Person 객체의 값을 DB에 저장 -->
+<!-- 입력 쿼리 -->
+<insert id="memberJoin" parameterType="member">
+
+insert into member_table(
+
+	member_id
+	, member_pw
+	, member_nm
+
+)values(
+
+	#{member_id}
+	, #{member_pw}
+	, #{member_nm}
+
+)
+
+
+</insert>
+
+<!-- 전체조회 쿼리 -->
+<select id="joinList" resultType="member">
+
+select
+	member_id
+	, member_pw
+	, member_nm
+	, to_char(member_indate, 'YY-MM-DD') as member_indate
+	
+from 
+	member_table
+
+order by
+	member_nm
+
+</select>
+
+<!-- 삭제쿼리 -->
+<delete id="memberDelete" parameterType="string">
+
+delete from 
+	member_table
+	
+where
+	member_id = #{member_id}
+
+</delete>
+
+<update id="memberUpdate" parameterType="string">
+
+update member_table
+	set
+		member_pw = #{member_pw}
+		, member_nm = #{member_nm}
+		
+	where
+		member_id = #{member_id}
+
+</update>
+
+<!-- 조건 검색 -->
+<select id="memberSearch" parameterType="string" resultType="member">
+
+select
+	member_id
+	, member_pw
+	, member_nm
+	, to_char(member_indate, 'YY-MM-DD') as member_indate
+	
+from 
+	member_table
+
+where
+		upper(member_id) like '%' || upper(#{member_id}) || '%'
+		
+	
+order by
+	member_nm desc
+
+
+</select>
+	
+</mapper>

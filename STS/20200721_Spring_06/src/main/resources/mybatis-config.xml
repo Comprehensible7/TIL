@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- vo연결 -->
+	<typeAliases>
+		<typeAlias type="com.scit.web6.vo.MemberVO" alias="member"/>
+	</typeAliases>
+	
+	<!-- mapper폴더의 xml을 연결 -->
+	<mappers>
+		<mapper resource="mapper/memberMapper.xml"/>
+	</mappers>
+	
+
+</configuration>

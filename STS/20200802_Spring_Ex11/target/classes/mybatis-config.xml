@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+		<!-- MemberVO -->
+		<typeAliases>
+			<typeAlias type="com.scit39.web11.vo.StudentVO" alias="student"/>
+		</typeAliases>
+		
+
+		<!-- mapper폴더의 Mapper를 연결 -->
+		<mappers>
+			<mapper resource="mapper/studentMapper.xml"/>
+		</mappers>
+		
+</configuration>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- interface연결 -->
+<mapper namespace="com.scit39.web11.dao.StudentMapper">
+
+<insert id="joinStudent" parameterType="student">
+
+insert into
+	student_tbs(
+		s_id
+		, s_name
+		, s_pw
+		, s_birth
+		, s_loc
+		, s_subject
+	)values(
+		#{s_id}
+		,#{s_name}
+		,#{s_pw}
+		,#{s_birth}
+		,#{s_loc}
+		,#{s_subject}
+	)
+
+</insert>
+
+
+<select id="selectStudent" resultType="student">
+
+	select 
+		row_number() over(order by s_id) s_num
+		, s_id
+		, s_name
+		, s_pw
+		, s_birth
+		, s_loc
+		, s_subject
+		, to_char(s_indate,'YYYY-MM-DD') as s_indate
+		
+	from
+		student_tbs
+	order by
+		student_id
+
+
+</select>
+
+
+<delete id="deleteStudent" parameterType="string">
+
+delete from
+	student_tbs
+where
+	s_id = #{s_id}
+
+
+
+</delete>
+
+
+<update id="updateStudent" parameterType="student">
+
+update	student_tbs
+	set
+		, s_name = #{s_name}
+		, s_pw = #{s_pw}
+		, s_birth = #{s_birth}
+		, s_loc = #{s_loc}
+		, s_subject = #{s_subject}
+		
+	where
+		s_id = #{s_id}
+
+
+
+</update>
+
+
+
+<select id="searchStudent" parameterType="string" resultType="student">
+
+select 
+		row_number() over(order by s_id) s_num
+		, s_id
+		, s_name
+		, s_pw
+		, s_birth
+		, s_loc
+		, s_subject
+		, to_char(s_indate,'YYYY-MM-DD') as s_indate
+		
+	from
+		student_tbs
+	where
+		upper(s_id) like '%' || upper(#{s_id}) || '%'
+	
+	order by
+		s_id
+
+
+</select>
+
+</mapper>
