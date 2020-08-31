@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- interface 연결 -->
+<mapper namespace="com.scit39.web13.dao.BookMapper">
+
+<insert id="insertBook" parameterType="book">
+
+insert into
+	book_serv(
+	
+		book_id
+		, book_user
+		, book_pw
+		, book_name
+		, book_auth
+		, book_pub
+		, book_loc
+		, book_price
+		
+	)values(
+	
+		#{book_id}
+		, bookserv_seq.nextVal
+		, #{book_pw}
+		, #{book_name}
+		, #{book_auth}
+		, #{book_pub}
+		, #{book_loc}
+		, #{book_price}
+	
+	)
+
+
+
+</insert>
+
+
+<select id="selectAll" resultType="book">
+
+select
+	row_number() over(order by book_id) book_row
+		, book_id
+		, book_user
+		, book_pw
+		, book_name
+		, book_auth
+		, book_pub
+		, book_loc
+		, book_price
+		, to_char(book_indate, 'YYYY-MM-DD') as book_indate
+		
+from 
+	book_serv
+	
+order by
+	book_id
+
+
+
+</select>
+
+<delete id="deleteBook" parameterType="string">
+
+delete
+	from
+		book_serv
+	
+	where
+		book_id = #{book_id}
+
+
+</delete>
+
+<select id="bookSelectOne" resultType="book" parameterType="string">
+
+select
+	row_number() over(order by book_id) book_row
+	, book_id
+	, book_user
+	, book_pw
+	, book_name
+	, book_auth
+	, book_pub
+	, book_loc
+	, book_price
+	, to_char(book_indate,'YYYY-MM-DD') as book_indate
+	
+from
+	book_serv
+	
+where
+	book_id = #{book_id}
+	
+order by
+	book_id 
+	
+
+</select>
+
+<update id="updateBook" parameterType="book">
+
+update
+	book_serv
+set
+	
+	book_id = #{book_id}
+	, book_pw = #{book_pw}
+	, book_name = #{book_name}
+	, book_auth = #{book_auth}
+	, book_pub = #{book_pub}
+	, book_loc = #{book_loc}
+	, book_price = #{book_price}
+	
+		
+
+
+
+
+
+
+</update>
+
+
+
+
+</mapper>

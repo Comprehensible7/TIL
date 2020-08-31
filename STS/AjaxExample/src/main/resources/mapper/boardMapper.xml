@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ajax.example.dao.BoardMapper">
+	<select id="getBoardList" resultType="board">
+		select
+			boardNum,
+			title,
+			writer,
+			to_char(indate, 'YYYY-MM-DD') as indate
+		from
+			board_table
+		order by
+			boardNum desc
+	</select>
+	
+	<select id="getBoard" parameterType="int" resultType="board">
+		select
+			boardNum,
+			title,
+			writer,
+			content,
+			to_char(indate, 'YYYY-MM-DD') as indate
+		from
+			board_table
+		where
+			boardNum = #{boardNum}
+	</select>
+	
+	<select id="getReplyList" parameterType="int" resultType="reply">
+		select
+			replyNum,
+			boardNum,
+			writer,
+			to_char(indate, 'YYYY-MM-DD') as indate,
+			content
+		from
+			reply_table
+		where
+			boardNum = #{boardNum}
+		order by
+			replyNum desc
+	</select>
+</mapper>

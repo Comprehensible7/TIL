@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.scit.web.dao.BoardMapper">
+	<select id="getBoardList" resultType="board">
+		select 
+			boardNum,
+			title,
+			writer,
+			to_char(indate, 'YY-MM-DD') as indate
+		from
+			board_Table
+		
+	</select>
+</mapper>

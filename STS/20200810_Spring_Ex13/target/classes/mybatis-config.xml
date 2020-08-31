@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- VO연결 -->
+	<typeAliases>
+		<typeAlias type="com.scit39.web13.vo.BookVO" alias="book" />
+	</typeAliases>
+
+	<!-- xml연결  -->
+	<mappers>
+		<mapper resource="mapper/bookMapper.xml" />
+	</mappers>
+</configuration>
