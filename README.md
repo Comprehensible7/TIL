@@ -29,4 +29,4 @@ Today What I Learned
 - Python
   - Basic
   - Vscode
-  - Game_Test
+  - GameTest
