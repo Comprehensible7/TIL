@@ -28,4 +28,5 @@ Today What I Learned
   
 - Python
   - Basic
-  - Pycharm
+  - Vscode
+  - Game_Test
