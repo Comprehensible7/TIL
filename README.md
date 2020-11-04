@@ -21,10 +21,7 @@ Today What I Learned
   - Basic
   - Java
   - Android Studio
-  
-- Kotlin
-  - Basic
-  - Android Studio
+  - Kotlin
   
 - Python
   - Basic
