@@ -1,29 +1,29 @@
-# TIL
+## TIL
 
-Today What I Learned
+# Today What I Learned
 
-- Java
+# Java
   - Basic
   - Mybatis
   - JavaScript
   - Eclipse
   
-- HTML
-  - Basic
+# Front
   - CSS
   - JSP
+  - HTML
   
-- Spring
+# Spring
   - Basic
   - STS
 
-- Android
+# Android
   - Basic
   - Java
   - Android Studio
   - Kotlin
   
-- Python
+# Python
   - Basic
   - Vscode
   - GameTest
