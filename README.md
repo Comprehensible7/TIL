@@ -1,6 +1,6 @@
-## TIL
+# TIL
 
-# Today What I Learned
+## Today What I Learned
 
 # Java
   - Basic
